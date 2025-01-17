@@ -1,9 +1,9 @@
 import React from 'react'
 import img from "../../Images/Blog-Img.jpg"
-
+import { Link } from 'react-router-dom';
 function Blogs() {
   return (
-    <div>
+    <div className='p-2 m-5 shadow-lg bg-gray-100 rounded-md'>
       <article class="flex bg-white transition hover:shadow-xl">
   <div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
     <time
@@ -38,12 +38,12 @@ function Blogs() {
     </div>
 
     <div class="sm:flex sm:items-end sm:justify-end">
-      <a
-        href="#"
+      <Link
+        to={'/'}
         class="block bg-yellow-300 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-yellow-400"
       >
         Read More
-      </a>
+      </Link>
     </div>
   </div>
 </article>

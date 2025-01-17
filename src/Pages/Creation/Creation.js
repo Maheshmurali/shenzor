@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Forms from '../../Components/Form/Forms'
 function Creation() {
   return (
     <div>
-      <h1>Creation</h1>
+      <Forms />
     </div>
   )
 }
