@@ -10,6 +10,9 @@ function Forms() {
   const date= new Date()
   const handleSubmit = (e)=>{
     e.preventDefault()
+    if (title.trim || content.trim){
+      alert("Error Field Must Fill")
+    }else{
     firebase.storage().ref(`/image/${img.name}`).put(img).then(({ref})=>{
       ref.getDownloadURL().then((url)=>{firebase.firestore().collection('news').add({
         title : title,
@@ -17,7 +20,7 @@ function Forms() {
         ImageURL :  url,
         Published : date.toDateString()
       }).then(()=>navigate('/'))})
-    })
+    })}
   }
   return (
     <div className='bg-slate-300'>
