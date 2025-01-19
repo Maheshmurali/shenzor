@@ -10,16 +10,20 @@ function Forms() {
   const date= new Date()
   const handleSubmit = (e)=>{
     e.preventDefault()
-    if (title.trim || content.trim){
-      alert("Error Field Must Fill")
-    }else{
+    if ((title.trim || content.trim) == ''){
+      alert("Error All Field Must Fill")
+    }
+    if (!img.type.startsWith('image/')) {
+      alert("Error: Please upload a valid image file.");
+      return;
+  }else{
     firebase.storage().ref(`/image/${img.name}`).put(img).then(({ref})=>{
       ref.getDownloadURL().then((url)=>{firebase.firestore().collection('news').add({
         title : title,
         content : content,
         ImageURL :  url,
         Published : date.toDateString()
-      }).then(()=>navigate('/'))})
+      }).then(()=>alert("Published"),navigate('/'))})
     })}
   }
   return (
@@ -37,7 +41,7 @@ function Forms() {
       value={content}
       onChange={(e)=>setContent(e.target.value)}
       class="bg-gray-100 text-gray-900 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" placeholder="Content"></textarea>
-     <img className='hidden' alt="Posts" width="200px" height="200px" src={img ? URL.createObjectURL(img): null}></img>
+     <img className='hidden' alt="Posts" width="100px" height="100px" src={img ? URL.createObjectURL(img): null}></img>
     </form>
     <form className='flex flex-col'>
             <br />
