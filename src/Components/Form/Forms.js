@@ -43,7 +43,7 @@ function Forms() {
             <br />
             <input onChange={(e)=>setImg(e.target.files[0])} type="file" />
             <br />
-            <button onClick={handleSubmit} className="uploadBtn bg-blue-700 p-2 rounded-lg justify-items-center">Publish</button>
+            <button onClick={handleSubmit} className="uploadBtn text-white bg-blue-700 p-2 rounded-lg justify-items-center">Publish</button>
           </form>
   </div>
 </div>
